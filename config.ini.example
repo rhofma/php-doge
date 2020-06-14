@@ -1,0 +1,18 @@
+[app]
+debug = true
+per-page = 10
+
+[db]
+driver = mysql
+host = localhost
+database = test
+user = root
+password = null
+
+
+[auth]
+user = admin
+password = admin
+
+[email]
+from = noreply@domain

@@ -1,0 +1,7 @@
+config.ini
+database/count
+public/css
+public/js
+public/img
+.vscode
+node_modules

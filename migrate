@@ -1,0 +1,39 @@
+#!/usr/bin/env php
+<?php
+
+require_once 'dirty/config.php';
+require_once 'dirty/debug.php';
+require_once 'dirty/database.php';
+require_once 'dirty/migrations.php';
+
+config([
+    'group' => 'path',
+    'configs' => [
+        'base' => __DIR__,
+        'database' => __DIR__ . '/database',
+        'dirty' => __DIR__ . '/dirty'
+    ]
+]);
+
+read_config();
+
+require_once config()['path']['database'] . '/migrations.php';
+
+if (!isset($argv[1])) {
+    all_up();
+    exit;
+}
+
+switch ($argv[1]) {
+    case 'up':
+        up();
+        break;
+    case 'down':
+        down();
+        break;
+    case 'reset':
+        all_down();
+        break;
+    default:
+        all_up();
+}
